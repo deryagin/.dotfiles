@@ -1,0 +1,116 @@
+#!/usr/bin/env bash
+
+script=`basename $0`
+argNum=${#}
+
+# Output help message.
+function usage () {
+	echo "SYNOPSIS:"
+    echo "  ${script} -c commit [-m 'message'] [--push]"
+    echo "  ${script} -n number [-m 'message'] [--push]"
+    echo "  ${script} --rollback"
+    echo "  ${script} [-h]"
+	echo ""
+	echo "DESCRIPTION:"
+    echo "  This is a tiny utility for fast 'squash and push' several last commits."
+    echo "  By default it takes the last commit message and the current branch upstream."
+	echo ""
+	echo "EXAMPLES:"
+	echo "  - Squash commits basing on 'commit' ID. Using the last log message."
+	echo "    ${script} -c 1862dee"
+	echo ""
+	echo "  - Squash last 2 commits (or 3, 4, etc). Using the last log message."
+	echo "    ${script} -n 2"
+	echo ""
+	echo "  - Squash last 5 commits. Using defined commit message."
+	echo "    ${script} -n 5 -m 'Commit message.'"
+	echo ""
+	echo "  - Squash last 3 commits and push current branch to the upstream."
+	echo "    ${script} -n 5 --push"
+	echo ""
+	echo "  - Rollback last squash."
+	echo "    ${script} --rollback"
+	echo ""
+	echo "PARAMETERS:"
+    echo "  -c | --commit  -- Commit ID."
+    echo "  -n | --number  -- The number of last commits."
+    echo "  -m | --message -- Commit message."
+    echo "  -h | --help    -- Print this help."
+    echo "  --push         -- Push current branch to the upstream branch."
+    echo "  --rollback     -- Rollback last squash operation."
+}
+
+# Parse input parameters.
+while [ ${1} ]; do
+    case ${1} in
+        -c | --commit)
+			commit=${2}
+			shift 2 ;;
+        -n | --number)
+			number=${2}
+			shift 2 ;;
+        -m | --message)
+			message=${2}
+			shift 2 ;;
+        --push)
+			push=true
+			shift 1 ;;
+        --rollback)
+			rollback=true
+			shift 1 ;;
+		-h | --help)
+			usage
+			exit 0 ;;
+		*)	echo "Error! Unknown parameter: ${*}" >&2
+			echo "\n"; usage
+			exit 1 ;;
+	esac
+done
+
+# If there are no arguments, then print usage.
+if [ ${argNum} -eq 0 ]; then
+	usage
+	exit 0
+fi
+
+# If there isn't commit and number, then error.
+if [ -z "${commit}" ] && [ -z "${number}" ] && [ -z "${rollback}" ]; then
+	echo "Error! Missing one of two parameters: '-c commit' or '-n number'" >&2
+	exit 1 
+fi
+
+# If commit number is defined, then it's doing squash for the definded commit number.
+if [ -n "${number}" ]; then
+	commit="HEAD~${number}"
+fi
+
+# If commit message is not definded take last commit message from current branch.
+if [ -z "${message}" ]; then
+	message=`git log -1 --pretty=%B | tr -d '\n'`
+fi
+
+# Reset the commits to staging and commit them again.
+git reset --soft $commit
+git commit -m "${message}"
+
+# If --push is defined, then push to upstream.
+if [ -n "${push}" ]; then
+	# Get current branch upstream: 'remote/branch' string;
+	upstream=`git rev-parse --abbrev-ref --symbolic-full-name @{u}`
+
+	# Split $upstream and convert is to array. http://stackoverflow.com/a/5257398
+	upstream=(${upstream//\// })
+
+	# Define remote and branch using upstream.
+	remote="${upstream[0]}"
+	branch="${upstream[1]}"
+
+	# Push to current branch upstream.
+	git push -vf ${remote} ${branch}
+fi
+
+# If --rallback is defined, then rollback the last squash operation.
+if [ -n "${rollback}" ]; then
+	git reset --hard HEAD@{2}
+fi
+

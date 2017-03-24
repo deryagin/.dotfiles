@@ -1,0 +1,49 @@
+[user]
+    name = deryagin
+    email = deryagin.and@gmail.com
+
+[core]
+    editor = vim
+
+[color]
+    ui = auto
+
+[log]
+    noprefix = true
+
+[show]
+    noprefix = true
+
+[merge]
+    tool = vimdiff
+
+[diff]
+    tool = vimdiff
+    noprefix = true
+
+[alias]
+    co = checkout
+    cb = checkout -b ; create and checkout new branch
+    ct = checkout -t ; git checkout -t origin/branch_name -- create a new local branch to track a remote branch
+    au = add -u
+    cm = commit
+    sp = commit -v -m 'WIP. Save point.'
+    st = status -sb
+    br = branch
+    bl = branch -vv
+    ba = branch -avv
+    rv = remote -v
+    df = diff
+    ds = diff --staged
+    da = diff HEAD ; shows all staged and working tree changes
+    dn = diff --name-status ; git diff --name-status 6e22113 3d7d0a4
+    ft = fetch -v --all --prune
+    ri = rebase -i
+    pl = pull -v --all --prune
+    ph = push -v
+    pu = push -v upstream ; push current branch into upstream remote rep.
+    lo = log --oneline -n20 --format='%C(yellow)%h %C(cyan)%ad %C(white)%s %C(magenta)[%an]' --date=short
+    lt= diff-tree --no-commit-id --name-only -r ; list of files for the commit: git diff-tree --no-commit-id --name-only -r bd61ad98
+    lp = log --oneline -p -n20 --date=short --format='%C(yellow)%h %C(cyan)%ad %C(white)%s %C(magenta)[%an]' ; git lp -- path/to/file -- one file history
+    graph = log --graph --oneline --abbrev-commit --decorate --simplify-by-decoration
+    visual = !tig
