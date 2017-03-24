@@ -1,0 +1,11 @@
+\timing on
+\pset border 2
+\pset null NULL
+\pset footer on
+\pset tuples_only off
+\pset pager on
+\set VERBOSITY verbose
+\set PROMPT1 '%[%033[1;1;40m%]psql%[%033[0m%]://%n%[%033[1;1;40m%]@%[%033[0m%]%M\/%[%033[1;1;40m%]%/%[%033[0m%]=%# '
+\set PROMPT2 '%[%033[1;1;40m%]psql%[%033[0m%]://%n%[%033[1;1;40m%]@%[%033[0m%]%M\/%[%033[1;1;40m%]%/%[%033[0m%]-> '
+SET search_path TO :schema; -- Example: psql -U postgres -d vpbx -v schema=vpbx
+SHOW search_path;
