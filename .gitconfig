@@ -30,13 +30,11 @@
     sp = commit -v -m 'WIP. Save point.'
     st = status -sb
     br = branch
-    bl = branch -vv
     ba = branch -avv
     rv = remote -v
     df = diff
     ds = diff --staged
     da = diff HEAD ; shows all staged and working tree changes
-    dn = diff --name-status ; git diff --name-status 6e22113 3d7d0a4
     ft = fetch -v --all --prune
     ri = rebase -i
     pl = pull -v --all --prune
