@@ -8,6 +8,7 @@
 (ln -s ~/.dotfiles/.noderc.js ~/.noderc.js && echo '[success] .noderc.js linked')
 (ln -s ~/.dotfiles/.npmrc ~/.npmrc && echo '[success] .npmrc linked')
 (ln -s ~/.dotfiles/.psqlrc ~/.psqlrc && echo '[success] .psqlrc linked')
+(ln -s ~/.dotfiles/.vimrc ~/.vimrc && echo '[success] .vimrc linked')
 (ln -s ~/.dotfiles/.zlogin ~/.zlogin && echo '[success] .zlogin linked')
 (ln -s ~/.dotfiles/.zlogout ~/.zlogout && echo '[success] .zlogout linked')
 (ln -s ~/.dotfiles/.zshrc ~/.zshrc && echo '[success] .zshrc linked')
