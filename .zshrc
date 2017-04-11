@@ -125,7 +125,7 @@ alias ld="ls -ld --color --sort=extension --time-style=long-iso"
 alias grep='grep --color=auto --exclude-dir=.git --exclude-dir=.idea'
 alias less='less -MR'
 alias mount='mount | column -t'
-alias findn='f() { find . -name "*$1*" }; f'
+alias findn='f() { find . -iname "*$1*" }; f'
 
 # git aliases
 alias gitdiff="git difftool --tool=vimdiff --no-prompt"
