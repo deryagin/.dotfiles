@@ -21,6 +21,9 @@
     tool = vimdiff
     noprefix = true
 
+[push]
+    default = current
+
 [alias]
     co = checkout
     cb = checkout -b ; create and checkout new branch
@@ -45,3 +48,4 @@
     lp = log --oneline -p -n20 --date=short --format='%C(yellow)%h %C(cyan)%ad %C(white)%s %C(magenta)[%an]' ; git lp -- path/to/file -- one file history
     graph = log --graph --oneline --abbrev-commit --decorate --simplify-by-decoration
     visual = !tig
+
