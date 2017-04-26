@@ -71,8 +71,8 @@ export GREP_COLOR='1;32'
 
 # key bindings https://wiki.archlinux.org/index.php/Zsh#Key_bindings
 # initially run zkbd, it will create  ~/.zkbd/xterm.
-autoload zkbd
-source ~/.zkbd/$TERM # may be different - check where zkbd saved the configuration:
+# autoload zkbd
+# source ~/.zkbd/$TERM # may be different - check where zkbd saved the configuration:
 [[ -n ${key[PageUp]} ]] && bindkey "${key[PageUp]}" up-line-or-history
 [[ -n ${key[PageDown]} ]] && bindkey "${key[PageDown]}" down-line-or-history
 [[ -n ${key[Backspace]} ]] && bindkey "${key[Backspace]}" backward-delete-char
@@ -125,7 +125,7 @@ alias ld="ls -ld --color --sort=extension --time-style=long-iso"
 alias grep='grep --color=auto --exclude-dir=.git --exclude-dir=.idea'
 alias less='less -MR'
 alias mount='mount | column -t'
-alias findn='f() { find . -iname "*$1*" }; f'
+alias fdn='f() { find . -iname "*$1*" }; f' # case insensitive search by template
 
 # git aliases
 alias gitdiff="git difftool --tool=vimdiff --no-prompt"
