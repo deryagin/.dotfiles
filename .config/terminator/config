@@ -1,14 +1,10 @@
 [global_config]
   enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   handle_size = 3
-  inactive_color_offset = 0.5
+  inactive_color_offset = 0.7
 [keybindings]
-  go_down = <Primary>Down
-  go_left = None
   go_next = None
   go_prev = None
-  go_right = None
-  go_up = <Primary>Up
   toggle_zoom = <Primary><Shift>a
 [layouts]
   [[default]]

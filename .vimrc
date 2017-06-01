@@ -90,7 +90,7 @@ inoremap <C-Space> <C-X><C-O>
 "Scroll
 set scrolloff=0
 set scrolljump=0
-set sidescroll=0
+set sidescroll=1
 set sidescrolloff=0
 
 "Folding
