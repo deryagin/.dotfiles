@@ -15,7 +15,7 @@ RPROMPT='%B%*%b'
 # base env variables
 export TERM=screen-256color
 export EDITOR='vim'
-export PAGER='less -i -n -S'
+export PAGER='less -i -n -S --tabs=4'
 export PSQL_EDITOR='vim -c "set ft=plsql"'
 export VISUAL='vim -c "set ft=mysql"'
 
