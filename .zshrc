@@ -122,6 +122,7 @@ alias la="ls -lA --color --group-directories-first --sort=extension --time-style
 alias ll="ls -l --color --group-directories-first --sort=extension --time-style=long-iso"
 alias lh="ls -lh --color --group-directories-first --sort=extension --time-style=long-iso"
 alias ld="ls -ld --color --sort=extension --time-style=long-iso"
+alias l1="ls -1"
 alias grep='grep --color=auto --exclude-dir=.git --exclude-dir=.idea'
 alias less='less -MR'
 alias mount='mount | column -t'
