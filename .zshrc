@@ -112,7 +112,7 @@ case $TERM in
     ;;
 esac
 
-# command aliases
+# aliases
 alias cp="cp -v"
 alias mv="mv -v"
 alias rm="rm -v"
@@ -127,22 +127,16 @@ alias grep='grep --color=auto --exclude-dir=.git --exclude-dir=.idea'
 alias less='less -MR'
 alias mount='mount | column -t'
 alias fdn='f() { find . -iname "*$1*" }; f' # case insensitive search by template
-
-# git aliases
 alias gitdiff="git difftool --tool=vimdiff --no-prompt"
 alias gitsave="git add -u; git commit -m 'WIP. Save point.'"
 alias gitback="git reset --mixed HEAD~1"
 alias gitco='f() { git branch | grep $1 | sed s/*\ // | xargs git checkout && git status -sb }; f' # git checkout by <pattern>
 alias gitswitch='git add -u;  git commit -m "WIP. Save point."; gitco $1' # git save current changes and checkout other branch by <pattern>
+alias json="jq '.' | vim -c 'set syntax=json nowrap nofoldenable' - " # e.g. curl -s -k -L https://example.com | json
+alias scurl="curl -w '\n\nLookup time:\t%{time_namelookup}s\nConnect time:\t%{time_connect}s\nTotal time:\t%{time_total}s\n'" # prints timings stats at the end
 
 # dirs aliases
 hash -d log=/var/log/
-
-# commands for formats
-alias -s php=vim
-alias -s avi=mplayer
-alias -s mpg=mplayer
-alias -s ogg=mplayer
 
 # man-pages coloring
 export LESS_TERMCAP_mb=$'\E[01;31m'
