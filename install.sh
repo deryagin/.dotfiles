@@ -4,6 +4,7 @@
 (ln -s ~/.dotfiles/.tmux.conf ~/.tmux.conf && echo '[success] .tmux.conf linked')
 (ln -s ~/.dotfiles/.my.cnf ~/.my.cnf && echo '[success] .my.cnf linked')
 (ln -s ~/.dotfiles/.gitconfig ~/.gitconfig && echo '[success] .gitconfig linked')
+(ln -s ~/.dotfiles/.gitignore ~/.gitignore && echo '[success] .gitignore linked')
 (ln -s ~/.dotfiles/.mongorc.js ~/.mongorc.js && echo '[success] .mongorc.js linked')
 (ln -s ~/.dotfiles/.noderc.js ~/.noderc.js && echo '[success] .noderc.js linked')
 (ln -s ~/.dotfiles/.npmrc ~/.npmrc && echo '[success] .npmrc linked')
