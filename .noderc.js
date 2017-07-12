@@ -1,18 +1,21 @@
-var repl = require("repl");
-var os = require("os");
+const repl = require("repl");
+const os = require("os");
 
-var user = process.env.USER;
-var hostname = os.hostname();
-var prompt = "node://" + user + "@" + hostname + "> ";
+let user = process.env.USER;
+let hostname = os.hostname();
+let prompt = "node://" + user + "@" + hostname + "> ";
 
-var console = repl.start({
+let instance = repl.start({
+  useGlobal: true,
+  ignoreUndefined: false,
   prompt: prompt,
-  ignoreUndefined: true
 });
 
-console.context.getPrototypeChain = function getPrototypeChain(obj) {
-  var chain = [obj];
-  var prototype = obj;
+instance.context.lodash = require('/home/deryaginav/.nvm/versions/node/v6.9.1/bin/../lib/node_modules/lodash');
+
+instance.context.getPrototypeChain = function getPrototypeChain(obj) {
+  let chain = [obj];
+  let prototype = obj;
   while (prototype = Object.getPrototypeOf(prototype)) {
     chain.push(prototype);
   }  
