@@ -4,8 +4,8 @@
 export PATH=~/.bin:$PATH
 
 # nvm (Node.js Version Manager)
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+export NODE_PATH=$(npm root --quiet -g)
 
 # command line prompt
 PROMPT='%F{cyan}%M%f:%F{yellow}%~%f %B$%b '
@@ -56,6 +56,10 @@ zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
+
+# file`s coloring depending on the type
+eval `dircolors`
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # grc command output highlighting
 if [ -f /usr/bin/grc ]; then
