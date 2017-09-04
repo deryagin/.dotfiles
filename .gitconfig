@@ -5,6 +5,7 @@
 [core]
     editor = vim
     excludesfile = ~/.gitignore
+    quotepath = off
 
 [color]
     ui = auto
