@@ -1,6 +1,7 @@
 node_modules
 npm-debug.log
 *.sw[nop]
+*.*~
 .vscode
 .idea
 tmp
