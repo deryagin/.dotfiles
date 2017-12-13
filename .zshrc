@@ -157,3 +157,4 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 # sudo fuser /var/lib/apt/lists/lock - PID of process which is locking apt database
 # cd - next/prev directory
 # source ~/.zshrc - config reload
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
