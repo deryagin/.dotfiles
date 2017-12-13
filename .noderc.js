@@ -11,7 +11,7 @@ let instance = repl.start({
   prompt: prompt,
 });
 
-instance.context.lodash = require('/home/deryaginav/.nvm/versions/node/v6.9.1/bin/../lib/node_modules/lodash');
+instance.context.lodash = require(`${process.env.NODE_PATH}/lodash`);
 
 instance.context.getPrototypeChain = function getPrototypeChain(obj) {
   let chain = [obj];
