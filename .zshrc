@@ -12,10 +12,20 @@ PROMPT='%F{cyan}%M%f:%F{yellow}%~%f %B$%b '
 PROMPT2='    %i ->'
 RPROMPT='%B%*%b'
 
+# wakatime, taken from https://github.com/irondoge/bash-wakatime/blob/master/bash-wakatime.sh
+pre_prompt_command() {
+    entity=$(echo $(fc -ln -0) | cut -d ' ' -f1)
+    [ -z "$entity" ] && return # $entity is empty or only whitespace
+    git status &> /dev/null && local project="$(basename $(git rev-parse --show-toplevel))" || local project="Terminal"
+    (wakatime --write --plugin "zsh-wakatime" --entity-type app --project "$project" --entity "$entity" 2>&1 > /dev/null &)
+}
+
+precmd () { pre_prompt_command }
+
 # base env variables
 export TERM=screen-256color
 export EDITOR='vim'
-export PAGER='less -i -n -S --tabs=4'
+export PAGER='less -inrS --tabs=4'
 export PSQL_EDITOR='vim -c "set ft=plsql"'
 export VISUAL='vim -c "set ft=mysql"'
 
