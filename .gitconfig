@@ -33,7 +33,7 @@
     au = add -u
     cm = commit
     sp = commit -v -m 'WIP. Save point.'
-    st = status -sb
+    st = !git status --short --branch --untracked-files=normal --ignored && git ignored
     br = branch
     ba = branch -avv
     rv = remote -v
@@ -50,4 +50,7 @@
     lp = log --oneline -p -n20 --date=short --format='%C(yellow)%h %C(cyan)%ad %C(white)%s %C(magenta)[%an]' ; git lp -- path/to/file -- one file history
     graph = log --graph --oneline --abbrev-commit --decorate --simplify-by-decoration
     visual = !tig
+    ignore = !git update-index --assume-unchanged ; temporary ingore/unignore files
+    unignore = !git update-index --no-assume-unchanged
+    ignored = !git ls-files -v | grep ^[a-z]
 
