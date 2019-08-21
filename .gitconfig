@@ -45,7 +45,7 @@
     pl = pull -v --all --prune
     ph = push -v
     pu = push -v upstream ; push current branch into upstream remote rep.
-    lo = log --oneline -n20 --format='%C(yellow)%h %C(cyan)%ad %C(white)%s %C(magenta)[%an]' --date=short
+    lo = log --oneline -n20 --no-merges --format='%C(yellow)%h %C(cyan)%ad %C(white)%s %C(magenta)[%an]' --date=short
     lt= diff-tree --no-commit-id --name-only -r ; list of files for the commit: git diff-tree --no-commit-id --name-only -r bd61ad98
     lp = log --oneline -p -n20 --date=short --format='%C(yellow)%h %C(cyan)%ad %C(white)%s %C(magenta)[%an]' ; git lp -- path/to/file -- one file history
     graph = log --graph --oneline --abbrev-commit --decorate --simplify-by-decoration
