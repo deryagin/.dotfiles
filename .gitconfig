@@ -36,10 +36,11 @@
     st = !git status --short --branch --untracked-files=normal --ignored && git ignored
     br = branch
     ba = branch -avv
-    rv = remote -v
-    df = diff
-    ds = diff --staged
-    da = diff HEAD ; shows all staged and working tree changes
+	rv = remote -v
+	sh = show --color-words
+    df = diff --color-words
+    ds = diff --color-words --staged
+    da = diff --color-words HEAD ; shows all staged and working tree changes
     ft = fetch -v --all --prune
     ri = rebase -i
     pl = pull -v --all --prune
