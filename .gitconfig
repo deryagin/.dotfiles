@@ -32,7 +32,7 @@
     ct = checkout -t ; git checkout -t origin/branch_name -- create a new local branch to track a remote branch
     au = add -u
     cm = commit
-    sp = commit -v -m 'WIP. Save point.'
+    sp = commit --no-verify -v -m 'WIP. Save point.'
     st = !git status --short --branch --untracked-files=normal --ignored && git ignored
     br = branch
     ba = branch -avv
@@ -49,6 +49,7 @@
     lo = log --oneline -n20 --format='%C(yellow)%h %C(cyan)%ad %C(white)%s %C(magenta)[%an]' --date=short
     lt= diff-tree --no-commit-id --name-only -r ; list of files for the commit: git diff-tree --no-commit-id --name-only -r bd61ad98
     lp = log --oneline -p -n20 --date=short --format='%C(yellow)%h %C(cyan)%ad %C(white)%s %C(magenta)[%an]' ; git lp -- path/to/file -- one file history
+    fixup = "!f(){ git reset --soft HEAD~${1-1} && git commit --amend -C HEAD; };f" ; merges the last commit into its parent: git fixup, git fixup 2
     graph = log --graph --oneline --abbrev-commit --decorate --simplify-by-decoration
     visual = !tig
     ignore = !git update-index --assume-unchanged ; temporary ingore/unignore files
