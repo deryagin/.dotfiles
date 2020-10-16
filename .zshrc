@@ -8,7 +8,7 @@ export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 export NODE_PATH=$(npm root --quiet -g)
 
 # command line prompt
-PROMPT='%F{cyan}%M%f:%F{yellow}%~%f %B$%b '
+PROMPT='%F{yellow}%M%f:%F{blue}%~%f %B$%b '
 PROMPT2='    %i ->'
 RPROMPT='%B%*%b'
 

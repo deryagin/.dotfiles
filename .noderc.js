@@ -11,8 +11,8 @@ let instance = repl.start({
   prompt: prompt,
 });
 
-instance.context.lodash = require(`${process.env.NODE_PATH}/lodash`);
-instance.context.fp = require(`${process.env.NODE_PATH}/lodash/fp`);
+// instance.context.lodash = require(`${process.env.NODE_PATH}/lodash`);
+// instance.context.fp = require(`${process.env.NODE_PATH}/lodash/fp`);
 
 instance.context.getPrototypeChain = function getPrototypeChain(obj) {
   let chain = [obj];
