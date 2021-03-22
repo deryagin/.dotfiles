@@ -7,24 +7,31 @@
     excludesfile = ~/.gitignore
     quotepath = off
 
+[push]
+    default = current
+
 [color]
     ui = auto
+
+[diff]
+    tool = meld
+    noprefix = true
+
+[difftool "meld"]
+    cmd = meld "$LOCAL" "$REMOTE"
+
+[merge]
+    tool = meld
+
+[mergetool "meld"]
+    cmd = meld "$LOCAL" "$BASE" "$REMOTE" --output "$MERGED"
+	; cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
 
 [log]
     noprefix = true
 
 [show]
     noprefix = true
-
-[merge]
-    tool = vimdiff
-
-[diff]
-    tool = vimdiff
-    noprefix = true
-
-[push]
-    default = current
 
 [alias]
     co = checkout
@@ -38,18 +45,21 @@
     ba = branch -avv
 	rv = remote -v
 	sh = show --color-words
+    dt = difftool --dir-diff
     df = diff --color-words
     ds = diff --color-words --staged
     da = diff --color-words HEAD ; shows all staged and working tree changes
+    mt = mergetool
     ft = fetch -v --all --prune
     ri = rebase -i
     pl = pull -v --all --prune
     ph = push -v
     pu = push -v upstream ; push current branch into upstream remote rep.
     lo = log --oneline -n20 --format='%C(yellow)%h %C(cyan)%ad %C(white)%s %C(magenta)[%an]' --date=short
+	ts = log --no-walk --tags --pretty='%C(yellow)%h %C(cyan)%ad%d %C(magenta)[%an]' --decorate=short --date=short ; show tag list
     lt= diff-tree --no-commit-id --name-only -r ; list of files for the commit: git diff-tree --no-commit-id --name-only -r bd61ad98
     lp = log --oneline -p -n20 --date=short --format='%C(yellow)%h %C(cyan)%ad %C(white)%s %C(magenta)[%an]' ; git lp -- path/to/file -- one file history
-    fixup = "!f(){ git reset --soft HEAD~${1-1} && git commit --amend -C HEAD; };f" ; merges the last commit into its parent: git fixup, git fixup 2
+    fixup = "!f(){ git reset --soft HEAD~${1-1} && git commit --no-verify --amend -C HEAD; };f" ; merges the last commit into its parent: git fixup, git fixup 2
     graph = log --graph --oneline --abbrev-commit --decorate --simplify-by-decoration
     visual = !tig
     ignore = !git update-index --assume-unchanged ; temporary ingore/unignore files
