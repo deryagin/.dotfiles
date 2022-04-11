@@ -61,6 +61,7 @@
     lp = log --oneline -p -n20 --date=short --format='%C(yellow)%h %C(cyan)%ad %C(white)%s %C(magenta)[%an]%C(auto)' ; git lp -- path/to/file -- one file history
 	ts = log --no-walk --tags --pretty='%C(yellow)%h %C(cyan)%ad%C(white)%d %C(magenta)[%an]%C(auto)' --decorate=short --date=short ; show tag list
     fixup = "!f(){ git reset --soft HEAD~${1-1} && git commit --no-verify --amend -C HEAD; };f" ; merges the last commit into its parent: git fixup, git fixup 2
+	find = !git lo -n2000 | grep -i --color=auto
     graph = log --graph --oneline --abbrev-commit --decorate --simplify-by-decoration
     visual = !tig
     ignore = !git update-index --assume-unchanged ; temporary ingore/unignore files
